@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home-bg">
+
+  <div class="home-content">
+
+    <h2>Welcome to Kanji Flashcards 📘</h2>
+
+    <p>
+      JLPT N5 – N2 Kanji-г flashcard хэлбэрээр сурах вэб сайт.
+    </p>
+
+    {% if user.is_authenticated %}
+      <p>
+        Flashcards цэс рүү орж Kanji сурч эхлээрэй 💪
+      </p>
+    {% else %}
+      <p>
+        Flashcards ашиглахын тулд <b>Login</b> эсвэл <b>Register</b> хийнэ үү.
+      </p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Grammar Flashcards</h2>
+
+<!-- LEVEL BUTTONS -->
+<div class="level-container">
+    <a href="?level=N5" class="level-card n5">N5</a>
+    <a href="?level=N4" class="level-card n4">N4</a>
+    <a href="?level=N3" class="level-card n3">N3</a>
+    <a href="?level=N2" class="level-card n2">N2</a>
+    <a href="?level=N1" class="level-card n1">N1</a>
+</div>
+
+{% if grammar %}
+
+<div class="flashcard-container">
+
+    <div class="flip-card" onclick="flipCard()">
+        <div class="flip-inner" id="flipInner">
+
+            <!-- FRONT -->
+            <div class="flip-front">
+                <div class="grammar-structure">
+                    {{ grammar.structure }}
+                </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="flip-back">
+                <div class="grammar-meaning">
+                    {{ grammar.meaning }}
+                </div>
+                <div class="grammar-usage">
+                    {{ grammar.usage }}
+                </div>
+                <div class="grammar-example">
+                    {{ grammar.example }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="action-buttons">
+        <button class="btn know">知っている</button>
+        <button class="btn dontknow">知らない</button>
+        <a href="?level={{ grammar.level }}" class="btn next">次</a>
+    </div>
+
+</div>
+
+{% else %}
+<p>No grammar found.</p>
+{% endif %}
+
+<script>
+function flipCard() {
+    document.getElementById("flipInner").classList.toggle("flipped");
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home-bg">
+  <div class="account-container">
+    <h2>My Account</h2>
+
+    <div class="account-info">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+
+    <a href="{% url 'home' %}" class="back-home">← Back to Home</a>
+  </div>
+</div>
+{% endblock %}
